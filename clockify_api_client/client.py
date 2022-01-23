@@ -5,6 +5,7 @@ from clockify_api_client.factories.time_entry_factory import TimeEntryFactory
 from clockify_api_client.factories.user_factory import UserFactory
 from clockify_api_client.factories.workspace_factory import WorkspaceFactory
 from clockify_api_client.factories.client_factory import ClientFactory
+from clockify_api_client.factories.tag_factory import TagFactory
 from clockify_api_client.utils import Singleton
 
 
@@ -31,4 +32,5 @@ class ClockifyAPIClient(metaclass=Singleton):
         self.users = UserFactory(api_key=api_key, api_url=api_url)
         self.reports = ReportFactory(api_key=api_key, api_url=api_url)
         self.clients = ClientFactory(api_key=api_key, api_url=api_url)
+        self.tags = TagFactory(api_key=api_key, api_url=api_url)
         return self
