@@ -71,3 +71,18 @@ class TimeEntry(AbstractClockify):
         except Exception as e:
             logging.error("API error: {0}".format(e))
             raise e
+
+    def add_tags_to_time_entry(self, workspace_id, entry_id, tags: [str]):
+        """Updates time entry in Clockify with provided payload data.
+        :param workspace_id Id of workspace.
+        :param entry_id     Id of time entry.
+        :param tags         List of tags to be added to the time entry
+        :return             Updated time entry.
+        """
+        try:
+            url = self.base_url + '/workspaces/' + workspace_id + '/time-entries/' + entry_id + '/tags'
+            time_entry = self.put(url, {'tagIds': tags})
+            return time_entry
+        except Exception as e:
+            logging.error("API error: {0}".format(e))
+            raise e
